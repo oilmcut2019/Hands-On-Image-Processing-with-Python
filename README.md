@@ -1,61 +1,96 @@
-# Hands-On Image Processing with Python
+## Build image and container [Docker](https://docs.docker.com/get-started/)  for running python code from [Hands-On Image Processing with Python](https://github.com/PacktPublishing/Hands-On-Image-Processing-with-Python) book
 
-<a href="https://www.packtpub.com/big-data-and-business-intelligence/hands-image-processing-python?utm_source=github&utm_medium=repository&utm_campaign=9781789343731 "><img src="https://d255esdrn735hr.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/cover_11017.png" alt="Hands-On Image Processing with Python" height="256px" align="right"></a>
+___
 
-This is the code repository for [Hands-On Image Processing with Python](https://www.packtpub.com/big-data-and-business-intelligence/hands-image-processing-python?utm_source=github&utm_medium=repository&utm_campaign=9781789343731 ), published by Packt.
+When I try to run the python code from ***Hands-On Image Processing with Python*** book use newly environment, I get so many errors ***because the code needs the module or library with a specific version***.  to solve that problem I use ***docker*** to invent an environment that can be running the code. bellow this is the guideline for **build the image** and run container docker.  
 
-**Expert techniques for advanced image analysis and effective interpretation of image data**
+#### A. Linux Operating system (Linux OS)
 
-## What is this book about?
-Image processing plays an important role in our daily lives with various applications such as in social media (face detection), medical imaging (X-ray, CT-scan), security (fingerprint recognition) to robotics &amp; space. This book will touch the core of image processing, from concepts to code using Python.
+1. ##### First you have to make sure you already Install docker in your own PC than login docker  from terminal. If not yet, you can use command bellow this.
 
-This book covers the following exciting features:
-* Perform basic data pre-processing tasks such as image denoising and spatial filtering in Python 
-* Implement Fast Fourier Transform (FFT) and Frequency domain filters (e.g., Weiner) in Python 
-* Do morphological image processing and segment images with different algorithms 
-* Learn techniques to extract features from images and match images 
-* Write Python code to implement supervised / unsupervised machine learning algorithms for image processing 
-* Use deep learning models for image classification, segmentation, object detection, transfer learning and neural style transfer 
+   - $ sudo docker login
 
-If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1789343739) today!
+   It will ask username and password your docker hub. when you success login it will show like picture bellow this
 
-<a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
-alt="https://www.packtpub.com/" border="5" /></a>
+   <img src="container-docker/img/2.1.png" >
 
-## Instructions and Navigations
-All of the code is organized into folders. For example, Chapter02.
+   
 
-The code will look like the following:
-```
-viewer = viewer.ImageViewer(im)
-viewer.show()
-```
+2. ##### After that, clone or download this repository to your computer. If you use ***[git](https://www.git-scm.com/)***, you can follow the command bellow this
 
-**Following is what you need for this book:**
-This book is for Computer Vision Engineers, and machine learning developers who are good with Python programming and want to explore details and complexities of image processing. No prior knowledge of the image processing techniques is expected.	
+   - $ git clone https://github.com/oilmcut2019/Hands-On-Image-Processing-with-Python.git --branch=student
 
-With the following software and hardware list you can run all code files present in the book (Chapter 1-12).
-### Software and Hardware List
-| Chapter | Software required | OS required |
-| -------- | ------------------------------------ | ----------------------------------- |
-| 1 | Samba 4.x Server Software | Windows |
+     <img src="container-docker/img/2.png" >
+
+     
+
+3. ##### Change your working directory. 
+
+   - $ cd Hands-On-Image-Processing-with-Python/container-docker/
+
+     <img src="container-docker/img/3.png" >
+
+     
+
+4. ##### Build docker image using command in the terminal. use command bellow this
+
+   - $ sudo docker build -t hand-on-image-processing:1.0 .
+
+     <img src="container-docker/img/4.1.png" >
+
+     **note: you can change the name and tag image to the name you want*
+     
+     *in this case :
+     
+     ​				***the name is : jupyter-dsp***
+     
+     ​				***tag is : 1.0***
+     
+     **don't forget use . (dot) in the end of command*
+     
+   - when your build process finish, it will show like bellow this 
+
+     <img src="container-docker/img/5.png" >
+
+     
+
+5. ##### After finish build the image, than you can running the container following this command
+
+   - $ sudo docker run -it --net=host -v /tmp/.X11-unix:/tmp/.X11-unix --env QT_X11_NO_MITSHM=1 -e DISPLAY --rm jupyter-dsp:1.0
+
+     **explanation of command:*
+     
+     - *-it*= connect the container to terminal
+     - *--net=host* = use network from local 
+     - *-e DISPLAY*= export display server from local computer
+     - *--rm* = remove the container when stop
+     
+     <img src="container-docker/img/6.1.png">
+
+   
+
+6. ##### Open the **link** on the browser your computer such as chrome, internet explorer or Firefox, it will automatically go to your notebook .
+
+   <img src="container-docker/img/4.png">
+
+   
+
+   <img src="container-docker/img/6.png">
+
+   
+
+## Now available in [docker-hub](https://cloud.docker.com/u/anto112/repository/docker/anto112/hand-on-image-processing)
+
+For convenient reason, now the image available in docker-hub. so you no need to build your image by yourself. you just running the container following this command.
+
+- $ sudo docker run -it --net=host -v /tmp/.X11-unix:/tmp/.X11-unix --env QT_X11_NO_MITSHM=1 -e DISPLAY --rm anto112/jupyter-dsp:1.0
+
+Then just copy link to your browser to open the notebook. 
+
+#### B. Windows Operating System (Windows OS)
+
+- If you want to running in windows that have installed WSL ([*Windows Subsystem Linux*](https://docs.microsoft.com/en-us/windows/wsl/install-win10)) you can reference from **[here](https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly)**. Make sure you need to install Xserver for windows, such as [Xming](https://sourceforge.net/projects/xming/), [X410](https://token2shell.com/howto/x410/) and Etc.
 
 
-We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it]().
-
-### Related products
-* Python Machine Learning - Second Edition [[Packt]](https://www.packtpub.com/big-data-and-business-intelligence/python-machine-learning-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781787125933 ) [[Amazon]](https://www.amazon.com/dp/1787125939)
-
-* TensorFlow Machine Learning Cookbook - Second Edition [[Packt]](https://www.packtpub.com/big-data-and-business-intelligence/tensorflow-machine-learning-cookbook-second-edition?utm_source=github&utm_medium=repository&utm_campaign=9781789131680 ) [[Amazon]](https://www.amazon.com/dp/1789131685)
-
-
-## Get to Know the Author
-**Sandipan Dey**
-is a data scientist with a wide range of interests, covering topics such as machine learning, deep learning, image processing, and computer vision. He has worked in numerous data science fields, working with recommender systems, predictive models for the events industry, sensor localization models, sentiment analysis, and device prognostics. He earned his master's degree in computer science from the University of Maryland, Baltimore County, and has published in a few IEEE Data Mining conferences and journals. He has earned certifications from 100+ MOOCs on data science, machine learning, deep learning, image processing, and related courses/specializations. He is a regular blogger on his blog sites (https://sandipanweb.wordpress.com/, https://sandipandey.wixsite.com/simplydatascience, https://www.datasciencecentral.com/profile/SandipanDey and https://sandipanumbc.tumblr.com/) and is a machine learning education enthusiast.	
-
-
-
-### Suggestions and Feedback
-[Click here](https://docs.google.com/forms/d/e/1FAIpQLSdy7dATC6QmEL81FIUuymZ0Wy9vH1jHkvpY57OiMeKGqib_Ow/viewform) if you have any feedback or suggestions.
-
+##### connect wit me in email: m07158031@mail2.mcut.edu.tw
 
