@@ -6,7 +6,7 @@ When I try to run the python code from ***Hands-On Image Processing with Python*
 
 #### A. Linux Operating system (Linux OS)
 
-1. ##### After that, clone or download this repository to your computer. If you use ***[git](https://www.git-scm.com/)***, you can follow the command bellow this
+1. ##### clone or download this repository to your computer. If you use ***[git](https://www.git-scm.com/)***, you can follow the command bellow this
 
    - $ git clone https://github.com/oilmcut2019/Hands-On-Image-Processing-with-Python.git --branch=student
 
