@@ -24,7 +24,7 @@ When I try to run the python code from ***Hands-On Image Processing with Python*
 
 3. ##### Build docker image using command in the terminal. use command bellow this
 
-   - $ docker build -t hand-on-image-processing:1.0 .
+   - $ docker build -t jupyter-dsp:1.0 .
 
      <img src="container-docker/img/4.1.png" >
 
