@@ -67,6 +67,12 @@ When I try to run the python code from ***Hands-On Image Processing with Python*
 
    <img src="container-docker/img/6.png">
 
+
+  **note:*
+   when you run the code but not show any display you need to export DISPLAY server, following the command:
+   - $ echo $DISPLAY
+   - $ xhost +
+   - then re-run step 4 
    
 
 ## Now available in [docker-hub](https://cloud.docker.com/u/anto112/repository/docker/anto112/hand-on-image-processing)
