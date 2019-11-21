@@ -2,8 +2,8 @@
 
 ___
 
-**created by : Haryanto**
-**instructor : Chuang-Jan Chang**
+**created by : Haryanto**<br>
+**instructor : Chuang-Jan Chang**<br>
 **OIL Lab Ming Chi University Of Technology**
 
 When I try to run the python code from ***Hands-On Image Processing with Python*** book use newly environment, I get so many errors ***because the code needs the module or library with a specific version***.  to solve that problem I use ***docker*** to invent an environment that can be running the code. bellow this is the guideline for **build the image** and run container docker.  
